@@ -1,2 +1,2 @@
 usage:
-./network inputfile outputfile {probability]
+./network inputfile outputfile {probability}
