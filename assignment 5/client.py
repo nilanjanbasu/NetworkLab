@@ -20,14 +20,14 @@ class Client():
 				self.server_sock.close()		
 			print "[ERR] Cannot bind address / Connect to server"
 			sys.exit(1)
-		
+		self.server_sock.listen(5)
+		print "[INFO]Listening at port %s"%(self.server_sock.getsockname()[1],)
 		Thread(target=self.incoming_accept).start()
 		
 		#~ self.refresh_peerlist(self.sock)
 		
 	def incoming_accept(self):
-		self.server_sock.listen(5)
-		print "[INFO]Listening at port %s"%(self.server_sock.getsockname()[1],)
+		
 		while(1):
 			try:
 				conn, addr = self.server_sock.accept()				
@@ -192,7 +192,7 @@ class ChatWindow:
 		conn.close()
 		
 	def send_data(self,event):
-		print "HEY"
+		#~ print "HEY"
 		text = self.inputbox.get(1.0,'end')
 		self.conn.send(text)
 		

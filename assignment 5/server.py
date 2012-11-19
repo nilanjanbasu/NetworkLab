@@ -45,12 +45,12 @@ class Server():
 		
 		
 		while(True):
-			print "again",
+			#~ print "again",
 			data += conn.recv(1024);
-			print "OK1"
+			#~ print "OK1"
 			if not data:
 				break;
-			print "OK2"
+			#~ print "OK2"
 			if data.strip() == 'SEND_PEER_LIST':
 				self.send_peer_list(conn)
 			elif data.strip() == 'CLOSE':
@@ -61,14 +61,14 @@ class Server():
 		self.mutex.acquire()
 		del self.connected_hosts[addr[0]+":"+port]
 		self.mutex.release()
-		print "Done"
+		#~ print "Done"
 		
 	def send_peer_list(self,conn):
 		
 		buff = ""
-		print "Here1"
+		#~ print "Here1"
 		self.mutex.acquire()
-		print "Here2"
+		#~ print "Here2"
 		for i in self.connected_hosts:
 			buff += i +"\n"
 		self.mutex.release()
